@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Dashboard</title>
+    <link rel="shortcut icon" href="student.webp">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="first-block">
+        <div class="nav">
+            <div class="name">
+                <div class="logo-img"><img src="daksha3.png" alt=""></div>
+                <div class="logo">PERFECT</div>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="features.html">Features</a>
+                <a href="help.html">Contact</a>
+
+                <!-- User Welcome -->
+                <span id="userWelcome" style="display:none; color:white; margin-right:10px; font-weight:bold;"></span>
+
+                <!-- Login Link -->
+                <a href="login.html" id="loginLink">
+                    <button id="loginBtn">Sign In</button>
+                </a>
+
+                <!-- Logout Button -->
+                <button id="logoutBtn" style="display:none;">Logout</button>
+            </div>
+        </div>
+
+        <br><br><br>
+
+        <h2>Welcome</h2>
+
+        <div class="content">
+            <p>Empower your learning journey with the Smart Study Dashboard streamlined insights, personalized progress, and smarter outcomes.</p>
+            <div class="content-img"><img src="all.webp" alt=""></div>
+        </div>
+
+        <!-- Total Points Circle -->
+        <div class="points-circle" id="pointsCircle">
+            <span class="points-label">Total Points</span>
+            <span class="points-value" id="homeTotalPoints">0</span>
+        </div>
+    </div>
+
+    <!-- OPTIONS -->
+    <div class="options">
+        <div class="container2">
+            <div class="row2">
+                <div class="col2"> 
+                    <a href="profile.html">
+                        <div class="item">
+                            <div class="images">
+                                <img src="user.jpg" alt="">
+                            </div>
+                            <h4>USER</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col2">
+                    <a href="login.html" id="loginCardLink">
+                        <div class="item">
+                            <div class="images">
+                                <img src="loginimage.jpg" alt="">
+                            </div>
+                            <h4 id="loginCardText">LOGIN</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col2">
+                    <a href="help.html">
+                        <div class="item">
+                            <div class="images">
+                                <img src="help.png" alt="">
+                            </div>
+                            <h4>HELP</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- FEATURES -->
+    <div class="features">
+        <div class="features-container">
+            <div class="feature-heading">
+                <h1>Our Features</h1>
+                <a href="features.html"><button>view more</button></a>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col">
+                    <img src="boardimage.webp" alt="">
+                    <div class="feature"><a href="board.html"><button>WHITE BOARD</button></a></div>
+                </div>
+
+                <div class="col">
+                    <img src="chatbot image.webp" alt="">
+                    <div class="feature"><a href="aichatbot.html"><button>CHATBOT</button></a></div>
+                </div>
+
+                <div class="col">
+                    <img src="todoimage.webp" alt="">
+                    <div class="feature"><a href="todo.html"><button>TO DO LIST</button></a></div>
+                </div>
+
+                <div class="col">
+                    <img src="pdfconveter.png" alt="">
+                    <div class="feature"><a href="pdfconverter.html"><button>Pdf Converter</button></a></div>
+                </div>
+
+                <div class="col">
+                    <img src="studyimage.webp" alt="">
+                    <br>
+                    <div class="feature"><a href="studyMaterial.html"><button>LIBRARY</button></a></div>
+                </div>
+
+                <div class="col">
+                    <img src="tarckit image2.png" alt="">
+                    <div class="feature"><a href="timetracker.html"><button>Time Tracker</button></a></div>
+                </div>
+
+                <div class="col">
+                    <img src="calculator.jpeg" alt="">
+                    <div class="feature"><a href="calculator.html"><button>Calculator</button></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="conatiner3">
+            <div class="col3">
+                <p>Copyright team ENCRYPTORS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ONLY THIS SCRIPT -->
+    <script src="main.js"></script>
+</body>
+</html>

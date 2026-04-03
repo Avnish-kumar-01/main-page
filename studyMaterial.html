@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Material Upload</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f8ff;
+      text-align: center;
+      margin: 0;
+      padding: 30px;
+    }
+
+    /* Navigation Bar Styles */
+    nav {
+      background-color: #1e90ff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    nav img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    nav .logo-name {
+      font-size: 1.6em;
+      color: white;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 16px;
+      font-size: 1em;
+      margin: 0 5px;
+      border-radius: 6px;
+    }
+
+    nav a:hover {
+      background-color: #4682b4;
+    }
+
+    /* Heading */
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #1e90ff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Container Styles */
+    .upload-container,
+    .search-container,
+    .file-list-container {
+      margin: 20px auto;
+      padding: 25px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+      max-width: 800px;
+    }
+
+    .search-container {
+      background-color: #e6f7ff;
+    }
+
+    /* Form Styles */
+    input[type="text"],
+    input[type="file"] {
+      padding: 12px;
+      font-size: 1em;
+      width: 85%;
+      margin-bottom: 15px;
+      border: 2px solid #b0e0e6;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="file"]:focus {
+      border-color: #1e90ff;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 24px;
+      font-size: 1em;
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #4682b4;
+    }
+
+    /* File List Styles */
+    .file-list {
+      margin-top: 20px;
+      text-align: left;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    .file-list li {
+      padding: 15px;
+      background-color: #f9f9f9;
+      margin: 12px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .file-list li:hover {
+      background-color: #e6f7ff;
+    }
+
+    .file-list strong {
+      font-size: 1.1em;
+      color: #333;
+    }
+
+    .file-list small {
+      font-size: 0.9em;
+      color: #555;
+      display: block;
+      margin: 5px 0;
+    }
+
+    .action-links {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .file-list a {
+      color: #1e90ff;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .file-list a:hover {
+      text-decoration: underline;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: #ff0000;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85em;
+    }
+
+    .delete-btn:hover {
+      background-color: #cc0000;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: #666;
+      padding: 20px;
+      font-size: 1em;
+    }
+
+    /* Full Screen Modal Viewer */
+    .embedded-doc {
+      display: none;
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9999;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .viewer-box {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      font-size: 2em;
+      color: #ff0000;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 10001;
+      font-weight: bold;
+    }
+
+    .close-btn:hover {
+      color: #cc0000;
+    }
+
+    #documentContent {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      padding: 50px 20px 20px;
+      box-sizing: border-box;
+    }
+
+    .text-preview {
+      white-space: pre-wrap;
+      text-align: left;
+      font-family: monospace;
+      background: #f8f8f8;
+      padding: 20px;
+      border-radius: 8px;
+      min-height: calc(100% - 40px);
+    }
+
+    .unsupported-preview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 15px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: calc(100% - 20px);
+      border: none;
+      border-radius: 8px;
+    }
+
+    img.preview-image {
+      max-width: 100%;
+      max-height: calc(100vh - 120px);
+      display: block;
+      margin: auto;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      input[type="text"],
+      input[type="file"] {
+        width: 95%;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .delete-btn {
+        position: static;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div style="display: flex; align-items: center;">
+      <img src="daksha3.png" alt="Logo" />
+      <div class="logo-name">SMART DASHBOARD</div>
+    </div>
+    <div>
+      <a href="main.html">Home</a>
+      <a href="help.html">Contact</a>
+      <a href="features.html">Features</a>
+    </div>
+  </nav>
+
+  <h1>Study Material Upload</h1>
+
+  <div class="upload-container">
+    <h3>Upload Your Study Material</h3>
+    <input type="text" id="materialTitle" placeholder="Title of the material" required />
+    <input type="file" id="fileUpload" accept=".pdf,.doc,.docx,.txt,.ppt,.pptx,.png,.jpg,.jpeg" required />
+    <input type="text" id="tagsInput" placeholder="Enter tags (comma separated)" required />
+    <button onclick="uploadMaterial()">Upload</button>
+  </div>
+
+  <div class="search-container">
+    <h3>Search Study Materials</h3>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search by title, file name or tags"
+      onkeyup="searchMaterial()"
+    />
+  </div>
+
+  <div class="file-list-container">
+    <h3>Your Uploaded Materials</h3>
+    <ul id="materialList" class="file-list"></ul>
+  </div>
+
+  <!-- Full Screen Document Viewer -->
+  <div id="documentViewer" class="embedded-doc">
+    <div class="viewer-box">
+      <button class="close-btn" onclick="closeDocument()">×</button>
+      <div id="documentContent"></div>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      displayMaterials();
+    };
+
+    function getMaterials() {
+      return JSON.parse(localStorage.getItem("materials")) || [];
+    }
+
+    function saveMaterials(materials) {
+      localStorage.setItem("materials", JSON.stringify(materials));
+    }
+
+    function uploadMaterial() {
+      const title = document.getElementById("materialTitle").value.trim();
+      const file = document.getElementById("fileUpload").files[0];
+      const tagsRaw = document.getElementById("tagsInput").value.trim();
+
+      const tags = tagsRaw
+        ? tagsRaw.split(",").map(tag => tag.trim()).filter(tag => tag)
+        : [];
+
+      if (!title || !file || tags.length === 0) {
+        alert("Please fill in all fields correctly.");
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onloadend = function () {
+        const material = {
+          id: Date.now(),
+          title: title,
+          fileName: file.name,
+          fileSize: file.size,
+          fileType: file.type || getFileTypeFromName(file.name),
+          tags: tags,
+          lastModified: file.lastModified,
+          fileURL: reader.result
+        };
+
+        const materials = getMaterials();
+        materials.push(material);
+        saveMaterials(materials);
+
+        document.getElementById("materialTitle").value = "";
+        document.getElementById("tagsInput").value = "";
+        document.getElementById("fileUpload").value = "";
+
+        searchMaterial(); // current search ke according refresh
+        alert("Material uploaded successfully!");
+      };
+
+      reader.readAsDataURL(file);
+    }
+
+    function displayMaterials() {
+      const materials = getMaterials();
+      renderMaterials(materials);
+    }
+
+    function renderMaterials(materialsToRender) {
+      const materialList = document.getElementById("materialList");
+      materialList.innerHTML = "";
+
+      if (!materialsToRender.length) {
+        materialList.innerHTML = `<li class="empty-state">No study material found.</li>`;
+        return;
+      }
+
+      materialsToRender.forEach((material) => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `
+          <strong>${escapeHtml(material.title)}</strong>
+          <small><b>File:</b> ${escapeHtml(material.fileName || "Unknown file")}</small>
+          <small><b>Type:</b> ${escapeHtml(material.fileType || "Unknown type")}</small>
+          <small><b>Tags:</b> ${material.tags.map(tag => escapeHtml(tag)).join(", ")}</small>
+          
+          <div class="action-links">
+            <a onclick="openMaterialById(${material.id})">Open Document</a>
+            <a href="${material.fileURL}" download="${escapeHtml(material.fileName || "document")}">Download</a>
+          </div>
+
+          <button class="delete-btn" onclick="deleteMaterial(${material.id})">Delete</button>
+        `;
+        materialList.appendChild(listItem);
+      });
+    }
+
+    function deleteMaterial(id) {
+      let materials = getMaterials();
+      materials = materials.filter(material => material.id !== id);
+      saveMaterials(materials);
+      searchMaterial(); // filtered ya full list dono case handle
+    }
+
+    function searchMaterial() {
+      const searchQuery = document.getElementById("searchInput").value.toLowerCase().trim();
+      const materials = getMaterials();
+
+      if (!searchQuery) {
+        renderMaterials(materials);
+        return;
+      }
+
+      const filteredMaterials = materials.filter(material => {
+        const titleMatch = (material.title || "").toLowerCase().includes(searchQuery);
+        const fileNameMatch = (material.fileName || "").toLowerCase().includes(searchQuery);
+        const tagMatch = Array.isArray(material.tags) &&
+          material.tags.some(tag => tag.toLowerCase().includes(searchQuery));
+
+        return titleMatch || fileNameMatch || tagMatch;
+      });
+
+      renderMaterials(filteredMaterials);
+    }
+
+    function openMaterialById(id) {
+      const materials = getMaterials();
+      const material = materials.find(item => item.id === id);
+
+      if (!material) {
+        alert("Material not found.");
+        return;
+      }
+
+      openMaterial(material.fileURL, material.fileType, material.fileName);
+    }
+
+    function openMaterial(fileURL, fileType, fileName = "document") {
+      const documentViewer = document.getElementById("documentViewer");
+      const documentContent = document.getElementById("documentContent");
+
+      documentViewer.style.display = "block";
+
+      // PDF Preview
+      if (fileType === "application/pdf") {
+        documentContent.innerHTML = `
+          <iframe src="${fileURL}"></iframe>
+        `;
+      }
+      // TXT Preview
+      else if (fileType === "text/plain") {
+        fetch(fileURL)
+          .then(response => response.text())
+          .then(text => {
+            documentContent.innerHTML = `
+              <div class="text-preview">${escapeHtml(text)}</div>
+            `;
+          })
+          .catch(() => {
+            documentContent.innerHTML = `
+              <div class="unsupported-preview">
+                <p>Unable to preview this text file.</p>
+                <a href="${fileURL}" download="${fileName}">
+                  <button>Download File</button>
+                </a>
+              </div>
+            `;
+          });
+        return;
+      }
+      // Image Preview
+      else if (
+        fileType.startsWith("image/")
+      ) {
+        documentContent.innerHTML = `
+          <img src="${fileURL}" alt="Preview" class="preview-image" />
+        `;
+      }
+      // DOC / DOCX / PPT / PPTX not previewable from local base64 reliably
+      else if (
+        fileType === "application/msword" ||
+        fileType === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+        fileType === "application/vnd.ms-powerpoint" ||
+        fileType === "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+      ) {
+        documentContent.innerHTML = `
+          <div class="unsupported-preview">
+            <h2>Preview Not Supported</h2>
+            <p>
+              DOC, DOCX, PPT and PPTX files cannot be previewed directly from localStorage/base64 in browser.
+            </p>
+            <p>Please download the file and open it in MS Word / PowerPoint.</p>
+            <a href="${fileURL}" download="${fileName}">
+              <button>Download File</button>
+            </a>
+          </div>
+        `;
+      }
+      // Unsupported fallback
+      else {
+        documentContent.innerHTML = `
+          <div class="unsupported-preview">
+            <h2>File type not supported for preview</h2>
+            <a href="${fileURL}" download="${fileName}">
+              <button>Download File</button>
+            </a>
+          </div>
+        `;
+      }
+    }
+
+    function closeDocument() {
+      const documentViewer = document.getElementById("documentViewer");
+      const documentContent = document.getElementById("documentContent");
+
+      documentViewer.style.display = "none";
+      documentContent.innerHTML = "";
+    }
+
+    function getFileTypeFromName(fileName) {
+      const ext = fileName.split(".").pop().toLowerCase();
+
+      const map = {
+        pdf: "application/pdf",
+        txt: "text/plain",
+        doc: "application/msword",
+        docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        ppt: "application/vnd.ms-powerpoint",
+        pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        png: "image/png",
+        jpg: "image/jpeg",
+        jpeg: "image/jpeg"
+      };
+
+      return map[ext] || "application/octet-stream";
+    }
+
+    function escapeHtml(str) {
+      if (typeof str !== "string") return str;
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // ESC key se modal close
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        closeDocument();
+      }
+    });
+  </script>
+</body>
+</html>

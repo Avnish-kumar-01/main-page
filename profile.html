@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile - Smart Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f8fc;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    nav {
+      background-color: #1e90ff;
+      padding: 16px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+    }
+
+    nav .logo-name {
+      font-size: 1.6em;
+      color: white;
+      font-weight: bold;
+    }
+
+    nav .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav a,
+    nav button {
+      color: white;
+      text-decoration: none;
+      font-size: 1.05em;
+      padding: 10px 15px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav a:hover,
+    nav button:hover {
+      background-color: #4682b4;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 25px;
+      background-color: white;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .profile-info {
+      flex: 1;
+      min-width: 300px;
+      text-align: left;
+      padding-right: 20px;
+    }
+
+    .profile-info h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #1e90ff;
+    }
+
+    .profile-info p {
+      color: #555;
+      font-size: 1.1em;
+      margin-bottom: 14px;
+    }
+
+    .profile-info strong {
+      color: #222;
+    }
+
+    .profile-picture-container {
+      text-align: center;
+      min-width: 220px;
+    }
+
+    .profile-picture {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #1e90ff;
+      transition: border-color 0.3s ease;
+      background-color: #eee;
+    }
+
+    .profile-picture:hover {
+      border-color: #4682b4;
+    }
+
+    .update-form-container {
+      max-width: 1100px;
+      margin: 20px auto 50px;
+      padding: 25px;
+      background-color: white;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      display: none;
+    }
+
+    .update-form h3 {
+      text-align: center;
+      color: #1e90ff;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="file"] {
+      width: 100%;
+      padding: 14px;
+      font-size: 1em;
+      border-radius: 8px;
+      border: 2px solid #ddd;
+      background-color: #fafafa;
+      transition: border 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    input[type="file"]:focus {
+      border-color: #1e90ff;
+      outline: none;
+    }
+
+    .btn-group {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1em;
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #187bdb;
+    }
+
+    .cancel-btn {
+      background-color: #ff6347;
+    }
+
+    .cancel-btn:hover {
+      background-color: #d84b31;
+    }
+
+    .upload-btn {
+      background-color: #ff9800;
+    }
+
+    .upload-btn:hover {
+      background-color: #d88100;
+    }
+
+    .alert {
+      max-width: 500px;
+      margin: 20px auto 0;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 1em;
+      text-align: center;
+      display: none;
+    }
+
+    .success-alert {
+      background-color: #e7f9ed;
+      color: #1e7e34;
+      border: 1px solid #b7ebc6;
+    }
+
+    .error-alert {
+      background-color: #fdeaea;
+      color: #c0392b;
+      border: 1px solid #f5c6cb;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .profile-info {
+        padding-right: 0;
+        text-align: center;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav .nav-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo-name">SMART DASHBOARD</div>
+    <div class="nav-links">
+      <a href="main.html">Home</a>
+      <a href="help.html">Contact</a>
+      <a href="features.html">Features</a>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <!-- PROFILE SECTION -->
+  <div class="container">
+    <div class="profile-info">
+      <h2>User Profile</h2>
+      <p><strong>Name:</strong> <span id="username">Loading...</span></p>
+      <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+      <p><strong>User ID:</strong> <span id="userid">Loading...</span></p>
+      <p><strong>Mobile Number:</strong> <span id="mobile">Loading...</span></p>
+      <button onclick="showUpdateForm()">Update Profile</button>
+    </div>
+
+    <div class="profile-picture-container">
+      <img id="profilePic" class="profile-picture" src="https://via.placeholder.com/180" alt="Profile Picture">
+      <br><br>
+      <button class="upload-btn" onclick="triggerImageInput()">Change Picture</button>
+    </div>
+  </div>
+
+  <!-- UPDATE PROFILE FORM -->
+  <div id="updateSection" class="update-form-container">
+    <div class="update-form">
+      <h3>Update Your Profile</h3>
+
+      <div class="form-group">
+        <input type="text" id="newUsername" placeholder="Enter new name">
+      </div>
+
+      <div class="form-group">
+        <input type="email" id="newEmail" placeholder="Enter new email">
+      </div>
+
+      <div class="form-group">
+        <input type="tel" id="newMobile" placeholder="Enter mobile number">
+      </div>
+
+      <!-- hidden file input -->
+      <div class="form-group" style="display: none;">
+        <input type="file" id="profileImage" accept="image/*">
+      </div>
+
+      <div class="btn-group">
+        <button onclick="updateProfile()">Save Changes</button>
+        <button class="cancel-btn" onclick="cancelUpdate()">Cancel</button>
+      </div>
+
+      <div id="successAlert" class="alert success-alert"></div>
+      <div id="errorAlert" class="alert error-alert"></div>
+    </div>
+  </div>
+
+  <script>
+    let currentUser = {};
+
+    // ================= PAGE LOAD =================
+    window.onload = async function () {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        alert("Please login first!");
+        window.location.href = "login.html";
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:5000/api/auth/protected", {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          currentUser = data.user;
+          showProfile(data.user);
+        } else {
+          localStorage.removeItem("token");
+          alert("Session expired. Please login again.");
+          window.location.href = "login.html";
+        }
+
+      } catch (error) {
+        console.error("Profile Fetch Error:", error);
+        alert("Server error. Please try again.");
+        window.location.href = "login.html";
+      }
+    };
+
+    // ================= SHOW PROFILE =================
+    function showProfile(user) {
+      document.getElementById("username").textContent = user.name || "Not Provided";
+      document.getElementById("email").textContent = user.email || "Not Provided";
+      document.getElementById("userid").textContent = user.id || "Not Available";
+      document.getElementById("mobile").textContent = user.mobile || "Not Provided";
+
+      // localStorage image first preference
+      const savedProfilePic = localStorage.getItem("profilePic");
+
+      if (savedProfilePic) {
+        document.getElementById("profilePic").src = savedProfilePic;
+      } else if (user.profilePic) {
+        document.getElementById("profilePic").src = user.profilePic;
+      } else {
+        document.getElementById("profilePic").src = "https://via.placeholder.com/180";
+      }
+    }
+
+    // ================= SHOW UPDATE FORM =================
+    function showUpdateForm() {
+      document.getElementById("updateSection").style.display = "block";
+
+      // pre-fill current values
+      document.getElementById("newUsername").value = currentUser.name || "";
+      document.getElementById("newEmail").value = currentUser.email || "";
+      document.getElementById("newMobile").value = currentUser.mobile || "";
+
+      hideAlerts();
+
+      window.scrollTo({
+        top: document.getElementById("updateSection").offsetTop - 20,
+        behavior: "smooth"
+      });
+    }
+
+    // ================= CANCEL UPDATE =================
+    function cancelUpdate() {
+      document.getElementById("updateSection").style.display = "none";
+      hideAlerts();
+    }
+
+    // ================= ALERT HELPERS =================
+    function hideAlerts() {
+      document.getElementById("successAlert").style.display = "none";
+      document.getElementById("errorAlert").style.display = "none";
+    }
+
+    function showSuccess(message) {
+      const successBox = document.getElementById("successAlert");
+      const errorBox = document.getElementById("errorAlert");
+
+      errorBox.style.display = "none";
+      successBox.textContent = message;
+      successBox.style.display = "block";
+    }
+
+    function showError(message) {
+      const successBox = document.getElementById("successAlert");
+      const errorBox = document.getElementById("errorAlert");
+
+      successBox.style.display = "none";
+      errorBox.textContent = message;
+      errorBox.style.display = "block";
+    }
+
+    // ================= IMAGE PICKER =================
+    function triggerImageInput() {
+      document.getElementById("profileImage").click();
+    }
+
+    // ================= IMAGE PREVIEW + SAVE IN LOCALSTORAGE =================
+    document.getElementById("profileImage").addEventListener("change", function () {
+      const file = this.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = function () {
+          const imageData = reader.result;
+
+          // preview
+          document.getElementById("profilePic").src = imageData;
+
+          // save locally for refresh persistence
+          localStorage.setItem("profilePic", imageData);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // ================= UPDATE PROFILE =================
+    async function updateProfile() {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        alert("Please login again.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      const newUsername = document.getElementById("newUsername").value.trim();
+      const newEmail = document.getElementById("newEmail").value.trim();
+      const newMobile = document.getElementById("newMobile").value.trim();
+
+      if (!newUsername || !newEmail) {
+        showError("Name and Email are required.");
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:5000/api/auth/update-profile", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            name: newUsername,
+            email: newEmail,
+            mobile: newMobile
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          currentUser = data.user;
+          showProfile(data.user);
+          showSuccess("Profile updated successfully!");
+
+          setTimeout(() => {
+            document.getElementById("updateSection").style.display = "none";
+            hideAlerts();
+          }, 1500);
+
+        } else {
+          showError(data.message || "Update failed");
+        }
+
+      } catch (error) {
+        console.error("Update Profile Error:", error);
+        showError("Server error while updating profile");
+      }
+    }
+
+    // ================= LOGOUT =================
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+      localStorage.removeItem("token");
+      localStorage.removeItem("profilePic");
+      alert("Logged out successfully!");
+      window.location.href = "login.html";
+    });
+  </script>
+
+</body>
+</html>

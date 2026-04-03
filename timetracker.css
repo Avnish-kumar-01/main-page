@@ -1,0 +1,287 @@
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #eef4ff, #f9fbff);
+  color: #1e293b;
+  min-height: 100vh;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+.topbar {
+  width: 100%;
+  background: rgba(0, 113, 248, 0.95);
+  color: white;
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand img {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.brand h1 {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#userWelcome {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.home-btn {
+  text-decoration: none;
+  background: #d63384;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.home-btn:hover {
+  background: #b91c6b;
+}
+
+/* =========================
+   MAIN WRAPPER
+========================= */
+.tracker-wrapper {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+/* =========================
+   CARDS
+========================= */
+.tracker-card,
+.stats-card {
+  background: white;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(0, 113, 248, 0.08);
+}
+
+.tracker-card h2,
+.stats-card h3 {
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: #64748b;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* =========================
+   TIMER DISPLAY
+========================= */
+.timer-display {
+  font-size: 56px;
+  font-weight: 800;
+  text-align: center;
+  margin: 30px 0;
+  color: #0071f8;
+  letter-spacing: 2px;
+}
+
+.status-box {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
+.status-box span {
+  color: #475569;
+}
+
+.status-box strong {
+  color: #d63384;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.button-group button {
+  border: none;
+  padding: 14px 24px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  min-width: 140px;
+}
+
+#startBtn {
+  background: #0071f8;
+  color: white;
+}
+
+#startBtn:hover {
+  background: #005fd0;
+}
+
+#stopBtn {
+  background: #d63384;
+  color: white;
+}
+
+#stopBtn:hover {
+  background: #b91c6b;
+}
+
+#startBtn:disabled,
+#stopBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.message-box {
+  margin-top: 22px;
+  text-align: center;
+  font-weight: 600;
+  min-height: 24px;
+}
+
+/* =========================
+   STATS
+========================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0 30px;
+}
+
+.stat-item {
+  background: #f8fbff;
+  border: 1px solid rgba(0, 113, 248, 0.08);
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
+}
+
+.stat-item h4 {
+  font-size: 28px;
+  color: #0071f8;
+  margin-bottom: 8px;
+}
+
+.stat-item p {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.session-title {
+  margin-bottom: 16px;
+}
+
+.session-list {
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.session-item {
+  background: #f8fbff;
+  border: 1px solid rgba(0, 113, 248, 0.08);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.session-item strong {
+  color: #0f172a;
+}
+
+.session-item p {
+  margin-top: 6px;
+  color: #475569;
+  font-size: 14px;
+}
+
+.empty-text {
+  color: #64748b;
+  font-style: italic;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .tracker-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .timer-display {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 600px) {
+  .brand h1 {
+    font-size: 24px;
+  }
+
+  .timer-display {
+    font-size: 34px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,368 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #4a98f6;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+    max-width: 1050px;
+    padding: 10px;
+    gap: 13px;
+    align-items: stretch;
+}
+
+section{
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   TOOLS BOARD
+========================= */
+.tools-board{
+    width: 210px;
+    padding: 15px 22px 15px;
+    flex-shrink: 0;
+}
+
+.tools-board .row{
+    margin-bottom: 20px;
+}
+
+.row .options{
+    list-style: none;
+    margin: 10px 0 0 5px;
+}
+
+.row .options .option{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    flex-wrap: wrap;
+}
+
+.option:is(:hover, .active) img{
+    color: #4a98f6;
+}
+
+.option :where(span, label){
+    color: #5a6168;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.option:is(:hover, .active) :where(span, label){
+    color: #4a98f6;
+}
+
+.option #fill-color{
+    height: 14px;
+    width: 14px;
+    cursor: pointer;
+}
+
+#fill-color:checked ~ label{
+    color: #4a98f6;
+}
+
+.option #size-slider{
+    width: 100%;
+    height: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* =========================
+   COLORS
+========================= */
+.colors .options{
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.colors .option{
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    border-radius: 50%;
+    margin-top: 3px;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.colors .option.selected::before{
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    height: 12px;
+    width: 12px;
+    background-color: inherit;
+    border-radius: inherit;
+    border: 2px solid #fff;
+    transform: translate(-50%, -50%);
+}
+
+.colors .option:nth-child(1){
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.colors .option:nth-child(2){
+    background-color: #000;
+}
+
+.colors .option:nth-child(3){
+    background-color: red;
+}
+
+.colors .option:nth-child(4){
+    background-color: green;
+}
+
+.colors .option:nth-child(5){
+    background-color: #4a98f6;
+}
+
+.colors .option:first-child.selected::before{
+    border: 2px solid #ccc;
+}
+
+.option #color-picker{
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.row-button button{
+    width: 100%;
+    color: #fff;
+    margin-top: 10px;
+    outline: none;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.row-button .clear-canvas{
+    background-color: #6c757d;
+    border: 1px solid #6c757d;
+}
+
+.row-button .clear-canvas:hover{
+    background-color: #5a6268;
+}
+
+.row-button .save-img{
+    color: #fff;
+    background: #4a98f6;
+    border: 1px solid #4a98f6;
+}
+
+.row-button .save-img:hover{
+    background: #3a86e8;
+}
+
+/* =========================
+   TITLE
+========================= */
+#saving-title{
+    min-height: 50px;
+    background-color: #6c757d;
+    color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    border: 2px solid #000;
+    font-size: 1.2rem;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================
+   DRAWING BOARD
+========================= */
+.drawing-board{
+    flex: 1;
+    min-height: 600px;
+    overflow: hidden;
+}
+
+.drawing-board canvas{
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 7px;
+}
+
+/* =========================
+   LARGE TABLET
+========================= */
+@media (max-width: 992px){
+    .container{
+        max-width: 100%;
+        gap: 10px;
+    }
+
+    .tools-board{
+        width: 190px;
+        padding: 15px;
+    }
+
+    .drawing-board{
+        min-height: 500px;
+    }
+
+    #saving-title{
+        font-size: 1.1rem;
+    }
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 768px){
+    body{
+        padding: 15px;
+    }
+
+    .container{
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .tools-board{
+        width: 100%;
+        padding: 18px;
+    }
+
+    .drawing-board{
+        width: 100%;
+        min-height: 450px;
+    }
+
+    .row .options{
+        margin-left: 0;
+    }
+
+    .colors .options{
+        justify-content: flex-start;
+    }
+
+    .row-button{
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .row-button button{
+        flex: 1;
+        min-width: 140px;
+    }
+
+    #saving-title{
+        font-size: 1rem;
+        min-height: 45px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 480px){
+    body{
+        padding: 10px;
+    }
+
+    .container{
+        padding: 0;
+        gap: 12px;
+    }
+
+    .tools-board{
+        padding: 15px 12px;
+        border-radius: 10px;
+    }
+
+    .tools-board .row{
+        margin-bottom: 16px;
+    }
+
+    .option :where(span, label){
+        font-size: 13px;
+        padding-left: 8px;
+    }
+
+    .colors .options{
+        gap: 10px;
+    }
+
+    .colors .option{
+        width: 22px;
+        height: 22px;
+    }
+
+    .row-button{
+        flex-direction: column;
+    }
+
+    .row-button button{
+        width: 100%;
+        min-width: 100%;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .drawing-board{
+        min-height: 320px;
+        border-radius: 10px;
+    }
+
+    #saving-title{
+        font-size: 0.95rem;
+        padding: 8px;
+    }
+}
+
+/* =========================
+   EXTRA SMALL DEVICES
+========================= */
+@media (max-width: 320px){
+    .option :where(span, label){
+        font-size: 12px;
+    }
+
+    #saving-title{
+        font-size: 0.85rem;
+    }
+
+    .drawing-board{
+        min-height: 260px;
+    }
+}

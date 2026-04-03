@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help & Support - Smart Dashboard</title>
+  <link rel="stylesheet" href="help.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <a href="index.html"><i class="fa fa-home"></i> PERFECT</a>
+    </div>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="features.html">Features</a>
+      <a href="help.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="help-hero">
+    <div class="help-hero-content">
+      <h1>Help & Support Center</h1>
+      <p>
+        Need assistance? Explore answers to common questions, useful resources,
+        or contact our support team for personalized help.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="help-container">
+
+    <!-- FAQ Section -->
+    <section class="faq glass-card">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3><i class="fa fa-question-circle"></i> How do I create an account?</h3>
+        <p>Click on the Sign Up button on the top-right corner and fill in the required details to register your account.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3><i class="fa fa-question-circle"></i> How can I reset my password?</h3>
+        <p>Use the Forgot Password option on the login page and follow the instructions sent to your registered email.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3><i class="fa fa-question-circle"></i> How do I contact customer support?</h3>
+        <p>You can use the contact form below or reach out to our support team directly through the listed resources.</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-us glass-card">
+      <h2>Contact Us</h2>
+      <p>If you need further assistance, send us a message and we’ll get back to you as soon as possible.</p>
+
+      <form id="contactForm">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" placeholder="Write your message here..." rows="6" required></textarea>
+
+        <button type="submit">Send Message</button>
+        <p id="formStatus"></p>
+      </form>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources glass-card">
+      <h2>Directly Contact</h2>
+      <div class="resource-list">
+        <a href=#  class="resource-item">
+          <i class="fa fa-phone"></i>
+          <span>Mobile No.-7088021487</span>
+        </a>
+
+        <a href=# class="resource-item">
+          <i class="fa fa-envelope-square"></i>
+          <span>Emial Id - avnishrajput8630@gmail.com</span>
+        </a>
+
+        <a href="https://www.linkedin.com/in/avnish-kumar-7bba79381?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="resource-item">
+          <i class="fa fa-users"></i>
+          <span>linkedin</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 ENCRYPTORS. All Rights Reserved.</p>
+  </footer>
+
+  <script src="help.js"></script>
+</body>
+</html>

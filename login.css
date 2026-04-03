@@ -1,0 +1,107 @@
+
+.first-block{
+    height: 600px;
+
+}
+.login-container{
+    height: 450px;
+    width: 380px;
+    background-color: rgb(7, 4, 4,.5);
+    margin-left: 40%;
+    margin-top: -190px;
+ 
+    
+    border-radius: 15px;
+   
+}
+.form{
+    padding: 20px;
+    align-items: center;
+    margin: 20px;
+}
+.form input{
+    width: 200px;
+    height: 35px;
+    color: #fff;
+    background: transparent;
+    border: solid 3px #d63384;
+    border-top: none;
+    border-right: none;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    font-family: sans-serif;
+
+}
+.form label{
+    display: inline-block;
+    width: 80px;
+}
+.form h4{
+    margin-top: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #d63384;
+    font-size: 25px;
+    background-color: white;
+    margin: 2px;
+    padding: 8px;
+    border-radius: 20px;
+    font-family: sans-serif;
+   
+   
+}
+
+.btn2{
+    width: 100px;
+    height: 40px;
+    background-color: #d63384;
+    border: 2px solid #d63384 ;
+    margin-top: 13px;
+     border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+  
+
+
+}
+.form .link{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    
+
+}
+.form .link a{
+    text-decoration: none;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+  
+    color: #ff7200;
+    
+}
+.form .liw{
+
+ text-decoration: none;
+    font-size: 15px;
+    text-align: center;
+}
+.logos{
+    margin: 20px;
+    color: white;
+}
+.logos .go{
+    
+    margin: 15px;
+    font-size: 20px;
+    color: white;
+    padding-top: 5px;
+    transition: 0.3s ease;
+}
+.logos .go :hover{
+    color: #ff7200;
+}

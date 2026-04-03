@@ -1,0 +1,345 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #0b1020, #111827, #1e1b4b);
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.logo a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo a i {
+    color: #ec4899;
+}
+
+.links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.links a {
+    text-decoration: none;
+    color: #d1d5db;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.links a:hover,
+.links a.active {
+    color: #ffffff;
+}
+
+.links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(135deg, #ec4899, #4f46e5);
+    transition: width 0.3s ease;
+}
+
+.links a:hover::after,
+.links a.active::after {
+    width: 100%;
+}
+
+/* Hero */
+.help-hero {
+    min-height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.help-hero::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    top: -80px;
+    left: -80px;
+    border-radius: 50%;
+    background: rgba(236, 72, 153, 0.12);
+    filter: blur(60px);
+}
+
+.help-hero::after {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    bottom: -80px;
+    right: -80px;
+    border-radius: 50%;
+    background: rgba(6, 182, 212, 0.12);
+    filter: blur(60px);
+}
+
+.help-hero-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+}
+
+.help-hero-content h1 {
+    font-size: 50px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.help-hero-content p {
+    color: #d1d5db;
+    font-size: 18px;
+    max-width: 760px;
+    margin: auto;
+}
+
+/* Main Container */
+.help-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 20px 70px;
+    display: grid;
+    gap: 30px;
+}
+
+/* Shared Glass Card */
+.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    padding: 30px;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+    transition: all 0.35s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 42px rgba(0, 0, 0, 0.35);
+}
+
+/* Section Headings */
+.faq h2,
+.contact-us h2,
+.resources h2 {
+    font-size: 32px;
+    margin-bottom: 18px;
+    color: #ffffff;
+}
+
+.faq > p,
+.contact-us > p,
+.resources > p {
+    color: #d1d5db;
+}
+
+/* FAQ */
+.faq-item {
+    margin-top: 18px;
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.faq-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.faq-item h3 i {
+    color: #ec4899;
+    margin-right: 8px;
+}
+
+.faq-item p {
+    color: #d1d5db;
+    font-size: 16px;
+}
+
+/* Contact Form */
+.contact-us form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.contact-us label {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.contact-us input,
+.contact-us textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    outline: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.contact-us input::placeholder,
+.contact-us textarea::placeholder {
+    color: #9ca3af;
+}
+
+.contact-us input:focus,
+.contact-us textarea:focus {
+    border-color: rgba(236, 72, 153, 0.5);
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.12);
+}
+
+.contact-us button {
+    margin-top: 8px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #ec4899, #f43f5e);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    box-shadow: 0 10px 22px rgba(236, 72, 153, 0.22);
+}
+
+.contact-us button:hover {
+    background: linear-gradient(135deg, #06b6d4, #4f46e5);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(79, 70, 229, 0.24);
+}
+
+#formStatus {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #a7f3d0;
+}
+
+/* Resources */
+.resource-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.resource-item {
+    text-decoration: none;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 18px;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 700;
+    transition: all 0.35s ease;
+}
+
+.resource-item i {
+    font-size: 22px;
+    color: #06b6d4;
+}
+
+.resource-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 22px 15px;
+    background: rgba(15, 23, 42, 0.8);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #d1d5db;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 16px 18px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .logo a {
+        font-size: 20px;
+    }
+
+    .links {
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .help-hero-content h1 {
+        font-size: 34px;
+    }
+
+    .help-hero-content p {
+        font-size: 16px;
+    }
+
+    .faq h2,
+    .contact-us h2,
+    .resources h2 {
+        font-size: 26px;
+    }
+
+    .glass-card {
+        padding: 22px;
+    }
+}

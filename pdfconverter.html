@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Converter</title>
+  <link rel="stylesheet" href="pdfconverter.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <!-- File to PDF Converter Section -->
+    <div class="section">
+      <h2>Upload File to Convert to PDF</h2>
+      <div class="upload-box">
+        <input type="file" id="fileToPdf" multiple accept="image/*" />
+        <button class="btn" onclick="convertToPDF()">Convert to PDF</button>
+      </div>
+      <img src="icon for file to PDF converter - Copy - Copy.png" alt="Convert to PDF" class="image">
+    </div>
+
+    <!-- PDF to JPG Converter Section -->
+    <div class="section">
+      <h2>Upload PDF to Convert to JPG</h2>
+      <div class="upload-box">
+        <input type="file" id="pdfToJpg" accept="application/pdf" />
+        <button class="btn" onclick="convertToImages()">Convert to JPG</button>
+      </div>
+      <img src="icon for pdf to png converter.png" alt="Convert to JPG" class="image">
+    </div>
+  </div>
+  <script src="pdfconverter.js"></script>
+</body>
+</html>

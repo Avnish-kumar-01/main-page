@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Tracker | DAKSHA</title>
+  <link rel="shortcut icon" href="student.webp" type="image/webp" />
+  <link rel="stylesheet" href="timetracker.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="topbar">
+    <div class="brand">
+      <img src="daksha3.png" alt="DAKSHA Logo" />
+      <h1>PERFECT</h1>
+    </div>
+
+    <div class="nav-actions">
+      <!-- <span id="userWelcome">Welcome</span> -->
+      <a href="index.html" class="home-btn">Home</a>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="tracker-wrapper">
+    <section class="tracker-card">
+      <h2>Study Time Tracker</h2>
+      <p class="subtitle">Track your focused study sessions and earn productivity points.</p>
+
+      <div class="timer-display" id="timerDisplay">00:00:00</div>
+
+      <div class="status-box">
+        <span>Status:</span>
+        <strong id="timerStatus">Not Running</strong>
+      </div>
+
+      <div class="button-group">
+        <button id="startBtn">Start Timer</button>
+        <button id="stopBtn" disabled>Stop Timer</button>
+      </div>
+
+      <div class="message-box" id="messageBox"></div>
+    </section>
+
+    <section class="stats-card">
+      <h3>Today's Stats</h3>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h4 id="totalSessions">0</h4>
+          <p>Sessions</p>
+        </div>
+
+        <div class="stat-item">
+          <h4 id="totalMinutes">0</h4>
+          <p>Minutes</p>
+        </div>
+
+        <div class="stat-item">
+          <h4 id="totalPoints">0</h4>
+          <p>Points</p>
+        </div>
+      </div>
+
+      <h3 class="session-title">Today's Completed Sessions</h3>
+      <div id="sessionList" class="session-list">
+        <p class="empty-text">No sessions completed today.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="timetracker.js"></script>
+</body>
+</html>

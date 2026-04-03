@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Spent on Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .score {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        .timer {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Time Spent on This Page</h1>
+        <div class="score" id="score">0</div>
+        <div class="timer" id="timer">0 seconds</div>
+    </div>
+
+    <script>
+        let timeSpent = localStorage.getItem('timeSpent') ? parseInt(localStorage.getItem('timeSpent')) : 0; // Get time from localStorage
+        let timerInterval;
+
+        // Function to update the time and save it to localStorage
+        function updateTime() {
+            timeSpent++;
+            document.getElementById('score').textContent = timeSpent;
+            document.getElementById('timer').textContent = timeSpent + " seconds";
+            localStorage.setItem('timeSpent', timeSpent); // Save the updated time to localStorage
+        }
+
+        // Start the timer when the page is loaded
+        window.onload = function() {
+            timerInterval = setInterval(updateTime, 1000); // Update every second
+        };
+
+        // Optional: Stop the timer when the user leaves the page
+        window.onbeforeunload = function() {
+            clearInterval(timerInterval);
+        };
+    </script>
+</body>
+</html>
