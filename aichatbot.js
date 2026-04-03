@@ -5,7 +5,7 @@ const imagebtn = document.querySelector("#image");
 const image = document.querySelector("#image img");
 const imageinput = document.querySelector("#image input");
 
-const API_URL = "http://localhost:5000/api/ai/chat";
+const API_URL = " https://smart-dashboard-3.onrender.com/api/ai/chat";
 
 let user = {
   message: null,
