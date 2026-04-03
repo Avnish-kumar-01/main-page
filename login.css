@@ -1,27 +1,29 @@
-
 .first-block{
     height: 600px;
-
+    width: 100%;
 }
+
 .login-container{
     height: 450px;
     width: 380px;
+    max-width: 90%;
     background-color: rgb(7, 4, 4,.5);
     margin-left: 40%;
     margin-top: -190px;
- 
-    
     border-radius: 15px;
-   
+    box-sizing: border-box;
 }
+
 .form{
     padding: 20px;
     align-items: center;
     margin: 20px;
 }
+
 .form input{
     width: 200px;
     height: 35px;
+    max-width: 100%;
     color: #fff;
     background: transparent;
     border: solid 3px #d63384;
@@ -31,12 +33,15 @@
     letter-spacing: 1px;
     margin-top: 30px;
     font-family: sans-serif;
-
+    box-sizing: border-box;
 }
+
 .form label{
     display: inline-block;
     width: 80px;
+    color: white;
 }
+
 .form h4{
     margin-top: 20px;
     text-align: center;
@@ -48,60 +53,156 @@
     padding: 8px;
     border-radius: 20px;
     font-family: sans-serif;
-   
-   
 }
 
 .btn2{
     width: 100px;
     height: 40px;
     background-color: #d63384;
-    border: 2px solid #d63384 ;
+    border: 2px solid #d63384;
     margin-top: 13px;
-     border-radius: 10px;
+    border-radius: 10px;
     font-size: 15px;
     cursor: pointer;
     text-align: center;
-  
-
-
 }
+
 .form .link{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 17px;
     text-align: center;
     align-items: center;
     padding: 10px;
-    
-
 }
+
 .form .link a{
     text-decoration: none;
     font-size: 15px;
     text-align: center;
     padding: 10px;
-  
     color: #ff7200;
-    
 }
-.form .liw{
 
- text-decoration: none;
+.form .liw{
+    text-decoration: none;
     font-size: 15px;
     text-align: center;
 }
+
 .logos{
     margin: 20px;
     color: white;
+    text-align: center;
 }
+
 .logos .go{
-    
     margin: 15px;
     font-size: 20px;
     color: white;
     padding-top: 5px;
     transition: 0.3s ease;
 }
-.logos .go :hover{
+
+.logos .go:hover{
     color: #ff7200;
+}
+
+/* ========== Tablet Responsive ========== */
+@media (max-width: 992px){
+    .login-container{
+        margin: 40px auto;
+        width: 350px;
+        height: auto;
+    }
+
+    .first-block{
+        height: auto;
+        padding: 40px 0;
+    }
+
+    .form{
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .form input{
+        width: 100%;
+    }
+
+    .form label{
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .btn2{
+        width: 100%;
+    }
+}
+
+/* ========== Mobile Responsive ========== */
+@media (max-width: 576px){
+    .login-container{
+        width: 92%;
+        margin: 20px auto;
+        height: auto;
+        border-radius: 12px;
+    }
+
+    .first-block{
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .form{
+        margin: 5px;
+        padding: 12px;
+    }
+
+    .form h4{
+        font-size: 20px;
+        padding: 6px;
+    }
+
+    .form input{
+        width: 100%;
+        height: 40px;
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+    .form label{
+        width: 100%;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .btn2{
+        width: 100%;
+        height: 42px;
+        font-size: 14px;
+    }
+
+    .form .link{
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .form .link a{
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .form .liw{
+        font-size: 14px;
+    }
+
+    .logos{
+        margin: 10px 0;
+    }
+
+    .logos .go{
+        margin: 10px;
+        font-size: 18px;
+    }
 }
