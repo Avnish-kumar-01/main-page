@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         setLoggedOutUI();
     } else {
         try {
-            const response = await fetch("http://localhost:5000/api/auth/protected", {
+            const response = await fetch(" https://smart-dashboard-3.onrender.com/api/auth/protected", {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`
