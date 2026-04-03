@@ -3,7 +3,7 @@ const listcontainer = document.getElementById("list-container");
 const timeInput = document.getElementById("time");
 const submit = document.getElementById("submit");
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = " https://smart-dashboard-3.onrender.com";
 const token = localStorage.getItem("token");
 
 // Check login
