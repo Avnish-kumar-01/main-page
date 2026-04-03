@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000/api/time";
+const API_BASE = " https://smart-dashboard-3.onrender.com/api/time";
 
 const token = localStorage.getItem("token");
 const user = JSON.parse(localStorage.getItem("user")) || {};
